@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet.photon.css">
         <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
         html {
             width: 100%;
             height: 100%;
@@ -24,33 +25,37 @@
             height: 100%;
             padding: 0;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
             overflow-y: auto;
-            background: #FFF5F7;
+            background: linear-gradient(180deg, #FFF6FB 0%, #F3F0FF 100%);
         }
         .map-header {
-            background: linear-gradient(135deg, #FFD1DC 0%, #FFB3BA 35%, #D4A5A5 100%);
-            color: #5A4A52;
+            background: linear-gradient(135deg, #FFD1DC 0%, #E2C1F0 45%, #A3D8FF 100%);
+            color: #4D3B58;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 6px 16px rgba(213, 106, 121, 0.2);
+            box-shadow: 0 6px 20px rgba(163, 135, 189, 0.2);
             flex-shrink: 0;
             min-height: 120px;
-            border-bottom: 4px solid #E6B3D4;
+            border-bottom: 4px solid rgba(211, 165, 223, 0.8);
         }
         .map-header h1 {
             margin: 0;
-            font-size: 2em;
-            color: #5A4A52;
+            font-size: 2.2em;
+            color: #4D3B58;
+            font-family: 'Montserrat', 'Poppins', sans-serif;
+            letter-spacing: 0.03em;
             font-weight: 700;
         }
         .map-header p {
             margin: 5px 0;
-            font-size: 1.1em;
-            color: #7A6A72;
+            font-size: 1.05em;
+            color: #7B6E88;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
         }
         .container {
             display: flex;
@@ -74,60 +79,73 @@
         }
         .info-panel {
             width: 300px;
-            background: linear-gradient(180deg, rgba(255, 209, 220, 0.95) 0%, rgba(230, 179, 212, 0.9) 100%);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(180deg, rgba(241, 210, 244, 0.95) 0%, rgba(183, 216, 255, 0.92) 100%);
+            backdrop-filter: blur(12px);
             padding: 20px;
-            box-shadow: 0 8px 32px rgba(213, 106, 121, 0.2);
-            border-radius: 15px;
+            box-shadow: 0 10px 34px rgba(163, 135, 189, 0.18);
+            border-radius: 20px;
             margin: 20px 0 20px 20px;
-            border: 2px solid rgba(212, 165, 165, 0.4);
-            color: #5A4A52;
+            border: 2px solid rgba(197, 179, 223, 0.4);
+            color: #4D3B58;
             overflow-y: auto;
             max-height: calc(100vh - 180px);
         }
         .info-panel h2 {
             margin-top: 0;
-            color: #A0697A;
-            border-bottom: 2px solid #FFB3BA;
+            color: #6F4B7E;
+            border-bottom: 2px solid #F7A8D9;
             padding-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.02em;
         }
         .info-panel h3 {
             margin-top: 20px;
             margin-bottom: 10px;
-            color: #7A6A72;
+            color: #5A4A72;
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
         .info-panel p {
-            color: #5A4A52;
+            color: #4D3B58;
         }
         .info-panel ul {
             padding-left: 20px;
         }
         .info-panel li {
-            color: #5A4A52;
-            margin-bottom: 8px;
+            color: #4D3B58;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 16px;
+        }
+        .info-panel li::before {
+            content: "♥";
+            position: absolute;
+            left: 0;
+            color: #FF92C2;
+            font-size: 0.95em;
+            line-height: 1.5;
         }
         .map-info {
-            background: linear-gradient(135deg, rgba(255, 179, 186, 0.8) 0%, rgba(230, 179, 212, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(255, 207, 232, 0.92) 0%, rgba(190, 234, 255, 0.95) 100%);
             backdrop-filter: blur(10px);
             padding: 20px;
             margin: 10px 20px 20px 20px;
-            border-radius: 15px;
-            border: 2px solid rgba(212, 165, 165, 0.3);
-            color: #5A4A52;
+            border-radius: 18px;
+            border: 2px solid rgba(168, 190, 237, 0.5);
+            color: #4D3B58;
             width: auto;
-            box-shadow: 0 4px 12px rgba(213, 106, 121, 0.15);
+            box-shadow: 0 6px 18px rgba(145, 135, 191, 0.14);
         }
         .map-info h3 {
             margin-top: 0;
-            color: #A0697A;
-            border-left: 4px solid #FFB3BA;
+            color: #675C94;
+            border-left: 4px solid #8CC7FF;
             padding-left: 12px;
         }
         .map-info p {
             margin: 10px 0;
             line-height: 1.8;
-            color: #5A4A52;
+            color: #4D3B58;
         }
         .map-info strong {
             color: #7A6A72;
@@ -135,56 +153,142 @@
         }
         #map {
             flex: 1;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(213, 106, 121, 0.25);
+            border-radius: 24px;
+            box-shadow: 0 12px 34px rgba(163, 135, 189, 0.22);
             margin: 20px 20px 0px 20px;
-            border: 3px solid #D4A5A5;
+            border: 3px solid #B18DBF;
             min-height: 300px;
             min-width: 0;
             background: #FFFFFF;
         }
         .floating-card {
             position: static;
-            background: linear-gradient(135deg, rgba(255, 209, 220, 0.95) 0%, rgba(255, 179, 186, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(255, 209, 220, 0.95) 0%, rgba(215, 193, 255, 0.92) 100%);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 4px 16px rgba(213, 106, 121, 0.2);
-            border: 2px solid #E6B3D4;
+            border-radius: 20px;
+            padding: 18px;
+            box-shadow: 0 6px 22px rgba(163, 135, 189, 0.18);
+            border: 2px solid rgba(214, 175, 236, 0.6);
             z-index: auto;
             font-family: 'Segoe UI', sans-serif;
-            color: #5A4A52;
+            color: #4D3B58;
             margin-bottom: 20px;
             animation: slideDown 0.5s ease-in-out;
         }
         .floating-card div {
-            color: #5A4A52;
-            margin: 5px 0;
+            color: #4D3B58;
+            margin: 6px 0;
             font-weight: 500;
         }
         .floating-card strong {
-            color: #A0697A;
+            color: #6F4B7E;
             font-weight: 700;
+        }
+        .floating-card em {
+            color: #7A6A72;
+            font-style: italic;
+            font-weight: 500;
+        }
+        em {
+            color: #7A6A72;
+            font-style: italic;
+        }
+        .contact-icon {
+            color: #FF74A5;
+            margin-right: 8px;
+            min-width: 20px;
+            text-align: center;
+        }
+        .instagram-logo {
+            display: inline-block;
+            width: 1.1em;
+            height: 1.1em;
+            min-width: 24px;
+            border-radius: 0.35em;
+            background: radial-gradient(circle at 28% 28%, #ffffff 0%, #ffffff 18%, transparent 21%),
+                        linear-gradient(135deg, #f58529 0%, #dd2a7b 35%, #8134af 60%, #515bd4 100%);
+            position: relative;
+            vertical-align: middle;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+        }
+        .instagram-logo::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 60%;
+            height: 60%;
+            border: 2px solid rgba(255,255,255,0.9);
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+        .instagram-logo::before {
+            content: '';
+            position: absolute;
+            top: 18%;
+            right: 18%;
+            width: 16%;
+            height: 16%;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
+        }
+        .phone-logo {
+            display: inline-block;
+            width: 1.1em;
+            height: 1.1em;
+            min-width: 24px;
+            border-radius: 50%;
+            background: #FF92C2;
+            position: relative;
+            vertical-align: middle;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+        }
+        .phone-logo::before {
+            content: '';
+            position: absolute;
+            left: 26%;
+            top: 28%;
+            width: 40%;
+            height: 22%;
+            background: #fff;
+            border-radius: 10px;
+            transform: rotate(45deg);
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.8);
+        }
+        .phone-logo::after {
+            content: '';
+            position: absolute;
+            right: 18%;
+            top: 18%;
+            width: 14%;
+            height: 14%;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .floating-card .contact-icon {
+            color: #C59CE3;
         }
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         footer {
-            background: linear-gradient(90deg, #FFB3BA 0%, #FFD1DC 50%, #E6B3D4 100%);
-            color: #5A4A52;
+            background: linear-gradient(90deg, #FFC9E3 0%, #E7E2FF 50%, #A9E4FC 100%);
+            color: #4D3B58;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 -6px 16px rgba(213, 106, 121, 0.15);
+            box-shadow: 0 -6px 16px rgba(163, 135, 189, 0.18);
             flex-shrink: 0;
             font-size: 0.9em;
-            border-top: 4px solid #D4A5A5;
+            border-top: 4px solid rgba(197, 179, 223, 0.9);
             min-height: 80px;
             width: 100%;
         }
         footer p {
             margin: 5px 0;
-            color: #5A4A52;
+            color: #4D3B58;
         }
         footer a {
             color: #A0697A;
@@ -337,16 +441,16 @@
     </head>
     <body>
         <header class="map-header">
-            <h1>Web GIS Kelurahan Teling Atas</h1>
+            <h1>Web QGIS Kelurahan Teling Atas</h1>
             <p>Kecamatan Wanea, Kota Manado</p>
             <p>Peta interaktif wilayah Kelurahan Teling Atas dengan desain modern dan Glassmorphism.</p>
         </header>
         <div class="container">
             <aside class="info-panel">
                 <div class="floating-card">
-                    <div><strong>Nama:</strong> Christania Tiara Pratasik</div>
-                    <div><strong>NIM:</strong> 241011060002</div>
-                    <div><strong>Kelas:</strong> A</div>
+                    <div><i class="fas fa-user contact-icon"></i><strong>Nama:</strong> Christania Tiara Pratasik</div>
+                    <div><i class="fas fa-id-card contact-icon"></i><strong>NIM:</strong> 241011060002 </div>
+                    <div><i class="fas fa-graduation-cap contact-icon"></i><strong>Kelas:</strong> A </div>
                 </div>
                 <h2>Tentang Peta</h2>
                 <p>Kelurahan Teling Atas adalah salah satu kelurahan di Kecamatan Wanea, Kota Manado, Sulawesi Utara. Peta ini menampilkan batas wilayah, data administrasi, dan informasi geografis lainnya.</p>
@@ -359,7 +463,9 @@
                     <li>Animasi halus pada elemen UI</li>
                 </ul>
                 <h3>Informasi Kontak:</h3>
-                <p>Dibuat oleh: Christania Tiara Pratasik<br>NIM: 241011060002<br>Kelas: A</p>
+                <p><i class="fas fa-user contact-icon"></i><strong>Nama:</strong> Christania Tiara<br>
+                <span class="phone-logo contact-icon" role="img" aria-label="Phone"></span><strong>No. Telp:</strong> <em>082187392570</em><br>
+                <span class="instagram-logo contact-icon" role="img" aria-label="Instagram"></span><strong>Instagram:</strong> @chrstania.p</p>
             </aside>
             <div class="map-wrapper">
                 <div class="map-content">
@@ -376,7 +482,7 @@
         </div>
         <footer>
             <p>&copy; 2024 Web GIS Kelurahan Teling Atas</p>
-            <p>Dibuat oleh: <strong>Christania Tiara Pratasik</strong> | NIM: <strong>241011060002</strong> | Kelas: <strong>A</strong></p>
+            <p><i class="fas fa-user contact-icon"></i>Christania Tiara | <span class="phone-logo contact-icon" role="img" aria-label="Phone"></span><em>082187392570</em> | <span class="instagram-logo contact-icon" role="img" aria-label="Instagram"></span>@chrstania.p</p>
             <p>Kecamatan Wanea, Kota Manado, Sulawesi Utara</p>
             <p><small>Data Sumber: <a href="#">Badan Informasi Geospasial (BIG)</a> | Map by <a href="https://leafletjs.com" target="_blank">Leaflet | App by QGIS</a></small></p>
         </footer>
