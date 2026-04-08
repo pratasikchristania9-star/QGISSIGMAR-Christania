@@ -17,39 +17,47 @@
             height: 100%;
             padding: 0;
             margin: 0;
+            scroll-behavior: smooth;
         }
         body {
             width: 100%;
             height: 100%;
             padding: 0;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            overflow-y: auto;
+            background: #FFF5F7;
         }
         .map-header {
-            background: linear-gradient(135deg, #FFD1DC, #E0BFB8);
-            color: #B76E79;
+            background: linear-gradient(135deg, #FFD1DC 0%, #FFB3BA 35%, #D4A5A5 100%);
+            color: #5A4A52;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 16px rgba(213, 106, 121, 0.2);
             flex-shrink: 0;
             min-height: 120px;
+            border-bottom: 4px solid #E6B3D4;
         }
         .map-header h1 {
             margin: 0;
             font-size: 2em;
+            color: #5A4A52;
+            font-weight: 700;
         }
         .map-header p {
             margin: 5px 0;
             font-size: 1.1em;
+            color: #7A6A72;
         }
         .container {
             display: flex;
             flex: 1;
             min-height: 0;
             overflow: visible;
+            width: 100%;
         }
         .map-wrapper {
             flex: 1;
@@ -66,94 +74,159 @@
         }
         .info-panel {
             width: 300px;
-            background: rgba(255, 209, 220, 0.9);
+            background: linear-gradient(180deg, rgba(255, 209, 220, 0.95) 0%, rgba(230, 179, 212, 0.9) 100%);
             backdrop-filter: blur(10px);
             padding: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(213, 106, 121, 0.2);
             border-radius: 15px;
             margin: 20px 0 20px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #B76E79;
+            border: 2px solid rgba(212, 165, 165, 0.4);
+            color: #5A4A52;
             overflow-y: auto;
+            max-height: calc(100vh - 180px);
         }
-        .info-panel h2, .info-panel h3 {
+        .info-panel h2 {
+            margin-top: 0;
+            color: #A0697A;
+            border-bottom: 2px solid #FFB3BA;
+            padding-bottom: 10px;
+        }
+        .info-panel h3 {
             margin-top: 20px;
             margin-bottom: 10px;
+            color: #7A6A72;
+            font-weight: 600;
+        }
+        .info-panel p {
+            color: #5A4A52;
         }
         .info-panel ul {
             padding-left: 20px;
         }
+        .info-panel li {
+            color: #5A4A52;
+            margin-bottom: 8px;
+        }
         .map-info {
-            background: rgba(255, 209, 220, 0.7);
+            background: linear-gradient(135deg, rgba(255, 179, 186, 0.8) 0%, rgba(230, 179, 212, 0.8) 100%);
             backdrop-filter: blur(10px);
             padding: 20px;
             margin: 10px 20px 20px 20px;
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #B76E79;
+            border: 2px solid rgba(212, 165, 165, 0.3);
+            color: #5A4A52;
+            width: auto;
+            box-shadow: 0 4px 12px rgba(213, 106, 121, 0.15);
         }
         .map-info h3 {
             margin-top: 0;
-            color: #B76E79;
+            color: #A0697A;
+            border-left: 4px solid #FFB3BA;
+            padding-left: 12px;
         }
         .map-info p {
             margin: 10px 0;
-            line-height: 1.6;
+            line-height: 1.8;
+            color: #5A4A52;
+        }
+        .map-info strong {
+            color: #7A6A72;
+            font-weight: 600;
         }
         #map {
             flex: 1;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(213, 106, 121, 0.25);
             margin: 20px 20px 0px 20px;
-            border: 2px solid #B76E79;
+            border: 3px solid #D4A5A5;
             min-height: 300px;
             min-width: 0;
+            background: #FFFFFF;
         }
         .floating-card {
             position: static;
-            background: rgba(255, 209, 220, 0.9);
+            background: linear-gradient(135deg, rgba(255, 209, 220, 0.95) 0%, rgba(255, 179, 186, 0.9) 100%);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 15px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-            border: 2px solid rgba(183, 110, 121, 0.3);
+            box-shadow: 0 4px 16px rgba(213, 106, 121, 0.2);
+            border: 2px solid #E6B3D4;
             z-index: auto;
-            font-family: Arial, sans-serif;
-            color: #B76E79;
+            font-family: 'Segoe UI', sans-serif;
+            color: #5A4A52;
             margin-bottom: 20px;
             animation: slideDown 0.5s ease-in-out;
         }
+        .floating-card div {
+            color: #5A4A52;
+            margin: 5px 0;
+            font-weight: 500;
+        }
         .floating-card strong {
-            color: #B76E79;
+            color: #A0697A;
+            font-weight: 700;
         }
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         footer {
-            background: linear-gradient(135deg, #FFD1DC, #E0BFB8);
-            color: #B76E79;
+            background: linear-gradient(90deg, #FFB3BA 0%, #FFD1DC 50%, #E6B3D4 100%);
+            color: #5A4A52;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -6px 16px rgba(213, 106, 121, 0.15);
             flex-shrink: 0;
             font-size: 0.9em;
-            border-top: 2px solid rgba(183, 110, 121, 0.3);
+            border-top: 4px solid #D4A5A5;
             min-height: 80px;
+            width: 100%;
         }
         footer p {
             margin: 5px 0;
+            color: #5A4A52;
         }
         footer a {
-            color: #B76E79;
+            color: #A0697A;
             text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
         footer a:hover {
+            color: #FF9CA8;
             text-decoration: underline;
         }
+        footer strong {
+            color: #7A6A72;
+        }
+        /* Custom Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF5F7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFB3BA;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4A5A5;
+        }
+        /* Focus and Interaction Styles */
+        a {
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        a:focus {
+            outline: 2px solid #FFB3BA;
+            border-radius: 3px;
+        }
         @media (max-width: 768px) {
-            body {
+            html, body {
                 height: auto;
+                overflow-y: auto;
+            }
+            body {
                 min-height: 100vh;
             }
             .container {
@@ -178,6 +251,7 @@
                 max-height: none;
                 flex-shrink: 0;
                 order: 1;
+                overflow-y: visible;
             }
             .map-header {
                 padding: 15px;
@@ -196,10 +270,12 @@
                 min-height: 50vh;
                 height: 50vh;
                 flex-shrink: 0;
+                width: calc(100% - 20px);
             }
             .map-info {
                 margin: 10px;
                 padding: 15px;
+                width: calc(100% - 30px);
             }
             .floating-card {
                 position: static;
@@ -207,9 +283,14 @@
             }
             footer {
                 min-height: auto;
+                margin-top: 10px;
             }
         }
         @media (max-width: 480px) {
+            html, body {
+                height: auto;
+                overflow-y: auto;
+            }
             .map-header h1 {
                 font-size: 1.2em;
                 margin: 0;
@@ -223,21 +304,32 @@
                 padding: 10px;
                 max-height: none;
                 flex-shrink: 0;
+                overflow-y: visible;
             }
             #map {
                 margin: 5px;
                 min-height: 45vh;
                 height: 45vh;
                 flex-shrink: 0;
+                width: calc(100% - 10px);
             }
             .map-info {
                 margin: 5px;
                 padding: 10px;
+                width: calc(100% - 20px);
             }
             .floating-card {
                 position: static;
                 margin-bottom: 10px;
                 font-size: 0.8em;
+            }
+            footer {
+                font-size: 0.8em;
+                padding: 10px;
+                margin-top: 5px;
+            }
+            footer p {
+                margin: 3px 0;
             }
         }
         </style>
@@ -286,7 +378,7 @@
             <p>&copy; 2024 Web GIS Kelurahan Teling Atas</p>
             <p>Dibuat oleh: <strong>Christania Tiara Pratasik</strong> | NIM: <strong>241011060002</strong> | Kelas: <strong>A</strong></p>
             <p>Kecamatan Wanea, Kota Manado, Sulawesi Utara</p>
-            <p><small>Data Sumber: <a href="#">Badan Informasi Geospasial (BIG)</a> | Map by <a href="https://leafletjs.com" target="_blank">Leaflet</a></small></p>
+            <p><small>Data Sumber: <a href="#">Badan Informasi Geospasial (BIG)</a> | Map by <a href="https://leafletjs.com" target="_blank">Leaflet | App by QGIS</a></small></p>
         </footer>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
