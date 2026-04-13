@@ -270,6 +270,22 @@
         .floating-card .contact-icon {
             color: #C59CE3;
         }
+        .about-me-btn {
+            background: linear-gradient(135deg, #C85A6F 0%, #8B4860 100%);
+            border: 2px solid #C85A6F;
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .about-me-btn:hover {
+            background: linear-gradient(135deg, #8B4860 0%, #C85A6F 100%);
+            box-shadow: 0 4px 12px rgba(200, 90, 111, 0.5);
+        }
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -447,13 +463,18 @@
         </header>
         <div class="container">
             <aside class="info-panel">
-                <div class="floating-card">
+                <button class="about-me-btn" onclick="toggleAbout()">About Me</button>
+                <div id="about-content" style="display:none;" class="floating-card">
                     <div><i class="fas fa-user contact-icon"></i><strong>Nama:</strong> Christania Tiara Pratasik</div>
                     <div><i class="fas fa-id-card contact-icon"></i><strong>NIM:</strong> 241011060002 </div>
                     <div><i class="fas fa-graduation-cap contact-icon"></i><strong>Kelas:</strong> A </div>
+                    <div><span class="phone-logo contact-icon" role="img" aria-label="Phone"></span><strong>No. Telp:</strong> <em>082187392570</em></div>
+                    <div><span class="instagram-logo contact-icon" role="img" aria-label="Instagram"></span><strong>Instagram:</strong> @chrstania.p</div>
                 </div>
-                <h2>Tentang Peta</h2>
-                <p>Kelurahan Teling Atas adalah salah satu kelurahan di Kecamatan Wanea, Kota Manado, Sulawesi Utara. Peta ini menampilkan batas wilayah, data administrasi, dan informasi geografis lainnya.</p>
+                <button class="about-me-btn" onclick="toggleSection('about-map')">Tentang Peta</button>
+                <div id="about-map" style="display:none;" class="floating-card">
+                    <p>Kelurahan Teling Atas merupakan wilayah strategis di Kecamatan Wanea yang berada di dataran tinggi, sehingga memiliki udara sejuk dan pemandangan kota Manado yang indah. Sebagai kawasan vital, kelurahan ini menjadi lokasi penting bagi aspek pertahanan dan kesehatan karena keberadaan markas Kodam XIII/Merdeka serta RS Tk. II R.W. Mongisidi. Selain berperan sebagai jalur penghubung utama menuju Kabupaten Minahasa, wilayah ini memiliki potensi ekonomi yang kuat pada sektor kuliner dan pengembangan produk UMKM berbasis komoditas lokal Sulawesi Utara.</p>
+                </div>
                 <h3>Fitur Peta:</h3>
                 <ul>
                     <li>Basemap satelit Google untuk tampilan detail wilayah</li>
@@ -462,10 +483,6 @@
                     <li>Desain responsif untuk desktop, tablet, dan mobile</li>
                     <li>Animasi halus pada elemen UI</li>
                 </ul>
-                <h3>Informasi Kontak:</h3>
-                <p><i class="fas fa-user contact-icon"></i><strong>Nama:</strong> Christania Tiara<br>
-                <span class="phone-logo contact-icon" role="img" aria-label="Phone"></span><strong>No. Telp:</strong> <em>082187392570</em><br>
-                <span class="instagram-logo contact-icon" role="img" aria-label="Instagram"></span><strong>Instagram:</strong> @chrstania.p</p>
             </aside>
             <div class="map-wrapper">
                 <div class="map-content">
@@ -473,9 +490,10 @@
                     <div class="map-info">
                         <h3>Informasi Peta</h3>
                         <p><strong>Lokasi:</strong> Kelurahan Teling Atas, Kecamatan Wanea, Kota Manado, Sulawesi Utara</p>
-                        <p><strong>Luas Wilayah:</strong> Peta interaktif menampilkan batas administratif dan fitur geografis utama dari kelurahan.</p>
-                        <p><strong>Cara Menggunakan:</strong> Gunakan zoom control (+ dan -) untuk memperbesar atau memperkecil peta. Klik pada area untuk melihat informasi detail. Drag peta untuk menggeser tampilan.</p>
-                        <p><strong>Data Dasar:</strong> Peta ini menggunakan data dari Badan Informasi Geospasial (BIG) dan ditampilkan menggunakan Leaflet.js</p>
+                        <p><strong>Luas Wilayah:</strong> 117.00816 hektar</p>
+                        <p><strong>Deskripsi:</strong> Peta interaktif menampilkan batas administrasi Kelurahan Teling Atas dengan basemap satelit Google.</p>
+                        <p><strong>Cara Menggunakan:</strong> Gunakan kontrol zoom untuk memperbesar/perkecil. Klik area untuk info detail. Drag untuk geser tampilan.</p>
+                        <p><strong>Data Sumber:</strong> Badan Informasi Geospasial (BIG) dan Pemerintah Daerah, ditampilkan dengan Leaflet.js</p>
                     </div>
                 </div>
             </div>
@@ -707,6 +725,22 @@
         window.addEventListener('resize', function() {
             map.invalidateSize();
         });
+        function toggleAbout() {
+            var content = document.getElementById('about-content');
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        }
+        function toggleSection(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        }
         </script>        
     </body>
 </html>
